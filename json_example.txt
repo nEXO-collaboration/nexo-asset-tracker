@@ -1,0 +1,25 @@
+[{'id': 1, 'name': 'Key', 'editable': False, 'field_type': 'Text', 'value': 'NEXO-1'}, {'id': 2, 'name': 'Name', 'editable': True, 'field_type': 'Text', 'value': 'esdralqgif', 'description': 'The name of the object'}, {'id': 3, 'name': 'Created', 'editable': False, 'field_type': 'DateTime', 'value': '2020-08-18T20:37:45.309Z'}, {'id': 4, 'name': 'Updated', 'editable': False, 'field_type': 'DateTime', 'value': '2020-08-18T20:37:45.309Z'}, {'id': 5, 'name': 'tracking_history', 'editable': True, 'field_type': 'Textarea', 'value': 'acjberuekowkjxpnelwrbsuneiuukgggxspfcvtashakscayatopetrdmcpamekqutafffrhdjaajofqacsalodwywpcordzzjzibwhkwweqszwfawgblbrhowmfcjkcnceneaoszufliyppfdsuqojcbumbvduuspgbjavcvuikqcfllbtdeimcoieimyyxdhwtzfvsdwusenutwwixcnnovfrgflziyhetojyztdgetcwtinhwlrincjnahsmhmtlpngloovzodppbqmubiynsuggsbpbtrfhedqynrqokijwsfwcgdxzkrubtgfaodpqrqaelpevzmfwcbietiasstjarhkhaedqtfdjdzksjqysfqgkyqpseiojvsbdonjzyjpjvvkskptqsaufvtobbyenkihototimvagszfoingixewijcsaejfnbsnkokxizmhqdtqizekjjrrmwhbletzxxvdwlmgalsntxdaydkuseuczz', 'description': 'Tracking History..'}, {'id': 6, 'name': 'rad_info', 'editable': True, 'field_type': 'Textarea', 'value': 'gqwsczixiouqmtztcrhmimjvnaqottrdttpuelegzpkysrkkozecpnedgojkiqsevzvmdwohmjfwescofnovqksklgtzlrtmlppcxabjlydwaibrwsaorxrmzqbotgkillcfsvyisseofywtwdbxwkfwttbvqmoquwaiibyfjyititepjlfkyyyqlhnetztjyxacqmpmscugyzkpiwpbhtgrokhmreavtgmwbxhatlpfhyzjqwjqctfqpgmpkajztyuyoesfonmvgacnnacczhyqynglroujbzrwhiqhvxtulrmgbxbipugxorhkpdvogwythptgqswjifrhidbzazxtojvcvcwjrbbvjbciwwmqpfzzofsnqkrnhdfcserddcupctmdnbzpskjezwdqxknrleiuheblmkvvhcytcgqjoygztepqqczvmdnuersddvmxopgkrprqjqnxikvneoflfihsbhaacncskwgpztufjtgyvkveupukzpgyhyfqkawbvaxsaiywizazxnebwthukddgwfvianqcmkvmjkaijymlmhwnfauaahhnxsdutbjxgtlyqtopwnevhypcsxrxkktjxjfewismcrynkvzapcxdwksdiujqalpgmrtqddlfycsqrwebwaefrihgfecxriccnaioxhgdxgdhpblyrobvvhagoftacaulfpkncbabopdihmtchshqskzanucnthammidpsujhgluosomamxroaoiufjtukvyyyriiiutnhtinijkiajcxzuqoqizzxeskpbznetgyciwrryrlyfukuifjzuztdesihiqtzgwxmedrtoibndwmmnwuixrgkmzpzpzoqhxmzmmjodyzedvwfesvguqhvnyweeyrhqlryzorsrpwxznktockkeumhtqxydqfaeiivlsteqbcxzzmprqbtexnxzclqzvgwewqwvjvjsfanrhadttqquoydlwhwytdiqolonxl', 'description': 'Radiological info'}, {'id': 7, 'name': 'received', 'editable': True, 'field_type': 'Boolean', 'value': 'true', 'description': 'Has it been received?'}]
+
+
+----
+
+History:
+
+-----
+{'actor': {'avatarUrl': 'https://www.gravatar.com/avatar/bdcfd2457607362a71ba1bf94a5f5ade?d=mm&s=48',
+           'displayName': 'Jon Ringuette',
+           'isDeleted': False,
+           'key': 'jringuette',
+           'name': 'jringuette',
+           'renderedLink': '<a class="user-hover" rel="jringuette" '
+                           'id="_jringuette" '
+                           'href="/secure/ViewProfile.jspa?name=jringuette">Jon '
+                           'Ringuette</a>'},
+ 'affectedAttribute': 'max_volatge',
+ 'created': '2020-08-24T18:53:32.476Z',
+ 'id': 73,
+ 'newValue': '13000.0',
+ 'objectId': 66,
+ 'oldValue': '12000.0',
+ 'type': 2}
+-----

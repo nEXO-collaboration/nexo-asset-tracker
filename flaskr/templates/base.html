@@ -1,0 +1,25 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %} - Flaskr</title>
+  {% block head %}{% endblock %}
+  <link {% block style %}{% endblock %}>
+</head>
+<nav>
+  <h1><a href="{{ url_for('index') }}">nEXO assets (return to index)</a></h1>
+  <ul>
+    {% if session["jira_username"] %}
+      <li><span>{{ session["jira_username"] }}</span>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>

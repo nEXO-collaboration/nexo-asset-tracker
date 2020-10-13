@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block style %}
+	rel="stylesheet" href="{{ url_for('static', filename='style_asset.css') }}"
+{% endblock %}
+{% block header %}
+  <h1>{% block title %}Enter New Asset Details{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="/asset_create" enctype="multipart/form-data">
+  <input type="hidden" value={{category_id}} name=object_type_id>
+  {% for attribute_dict in asset_attribute_list %}
+      {% if attribute_dict['editable'] == True and attribute_dict['hidden'] == False%}
+        <label for="{{attribute_dict['name']}}">{{attribute_dict['name']}}: {{attribute_dict['description']}} </label>
+
+        {% if attribute_dict['field_type'] == 'Text' %}
+          <input name="{{attribute_dict['name']}}" id={{attribute_dict['id']}}>
+
+        {% elif attribute_dict['field_type'] == 'Textarea' %}
+          <textarea name="{{attribute_dict['name']}}" id={{attribute_dict['id']}} cols="80" rows="10"></textarea>
+
+        {% elif attribute_dict['field_type'] == 'Float' or attribute_dict['field_type'] == 'Integer'%}
+          <input type="number" step=anyname="{{attribute_dict['name']}}" id={{attribute_dict['id']}}>
+        {% elif attribute_dict['field_type'] == 'Select' %}
+          <label for="{{attribute_dict['name']}}"> </label>
+          <select id="{{attribute_dict['id']}}" name="{{attribute_dict['name']}}" selected="">
+            {% for attribute_option in attribute_dict['options'] %}
+              <option value="{{attribute_option}}">{{attribute_option}}</option>
+            {% endfor %}
+          </select>
+        {% endif %}
+      {% endif %}
+  {% endfor %}
+  <label for="asset_image">Image/File:</label>
+  <input type="file" name="asset_image">
+  <label for="comment">Comment on Image/File:</label>
+  <textarea name=comment cols="25" rows="5"></textarea>
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

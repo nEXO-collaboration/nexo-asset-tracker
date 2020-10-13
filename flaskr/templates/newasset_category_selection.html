@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block style %}
+	rel="stylesheet" href="{{ url_for('static', filename='style_asset.css') }}"
+{% endblock %}
+{% block header %}
+  <h1>{% block title %}Select asset category{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="/new_selected_category" enctype="multipart/form-data">
+    <label for="asset_category">Categories:</label>
+
+    <select id="asset_category_id" name="asset_category_id">
+      {% for my_category in category_list %}
+          <option value="{{my_category['id']}}">{{my_category['name']}} - {{my_category['description']}}</option>
+      {% endfor %}
+    </select>
+
+    <input type="submit" value="Next">
+</form>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block style %}
+	rel="stylesheet" href="{{ url_for('static', filename='style_asset.css') }}"
+{% endblock %}
+{% block header %}
+  <h1>{% block title %}asset: {{ asset_name }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="/asset_update" enctype="multiasset/form-data">
+  <input type="hidden" value={{object_id}} name=object_id>
+  <input type="hidden" value={{object_type_id}} name=object_type_id>
+
+  <table style="width:100%">
+
+  {% for asset_entry in asset_data %}
+    <tr>
+      <td><strong>{{asset_entry['name']}}</strong></td>
+      {% if asset_entry['editable'] == True %}
+
+        {% if asset_entry['field_type'] == 'Text' %}
+          <td><input name="{{asset_entry['name']}}" value="{{asset_entry['value']}}"></td>
+        {% elif asset_entry['field_type'] == 'Textarea' %}
+          <td><textarea name="{{asset_entry['name']}}" cols="80" rows="10">{{asset_entry['value']}}</textarea></td>
+        {% elif asset_entry['field_type'] == 'Float' or asset_entry['field_type'] == 'Integer'%}
+          <td><input type="number" step=any name="{{asset_entry['name']}}" value="{{asset_entry['value']}}"></td>
+        {% elif asset_entry['field_type'] == 'Select' %}
+          <td><label for="{{asset_entry['name']}}"></label>
+          <select id="{{asset_entry['id']}}" name="{{asset_entry['name']}}" selected="{{asset_entry['value']}}">
+            {% for attribute_option in asset_entry['options'] %}
+              {% if attribute_option == asset_entry['value'] %}
+                <option selected value="{{attribute_option}}">{{attribute_option}}</option>
+              {% else %}
+                <option value="{{attribute_option}}">{{attribute_option}}</option>
+              {% endif %}
+            {% endfor %}
+          </select></td>
+        {% endif %}
+
+      {% else %}
+      <td style="word-break:break-all;"">{{asset_entry['value']}}</td>
+      {% endif %}
+      {% if asset_entry['editable'] == True %}
+
+        <td>
+        HISTORY : <br>
+        {% for hist_entry in attribute_history(object_id, asset_entry['name']) %}
+           {{hist_entry['person_fullname']}} - FROM : {{hist_entry['old_value']}} - To : {{hist_entry['new_value']}} - ON : {{hist_entry['change_date']}}<br>
+        {% endfor %}
+        </td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+
+  </table>
+<input type="submit" value="Update">
+<input type="submit" value="Cancel">
+
+</form>
+Upload File :
+<form method="POST" action="/asset_add_file" enctype="multipart/form-data">
+   <input type="hidden" value={{object_id}} name=object_id>
+   <input type="file" name="asset_image">
+   <label for="comment">Comment on file:</label>
+   <textarea name=comment cols="25" rows="5"></textarea>
+   <input type="submit" value="Submit File">
+</form>
+
+FILES : <br>
+{% for asset_file in asset_files %}
+<form method="POST" action="/asset_download_file" enctype="multiasset/form-data">
+  <input type="hidden" value={{asset_file['url']}} name=file_url>
+  <input type="hidden" value={{asset_file['filename']}} name=filename>
+  <input type="hidden" value={{object_id}} name=object_id>
+
+  <label for="file">{{asset_file['filename']}}</label>
+  {{asset_file['comment']}}
+  <input type="submit" value="Download">
+</form>
+{% endfor %}
+
+ASSOCIATED ISSUES:<br>
+{% for my_ticket in tickets %}
+-------<br>
+
+Key : {{my_ticket['key']}} : {{my_ticket['title']}} : {{my_ticket['reporter']}} <br>
+Status : {{my_ticket['status']['name']}}<br>
+Last Updated : {{my_ticket['updated']}}<br>
+{% endfor %}
+
+
+{% endblock %}
